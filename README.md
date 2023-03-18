@@ -41,3 +41,7 @@ The links bellow were used to demonstrate the usage of the command. They may hav
 ### Disclaimer
 
 This repository and the Docker image provided here are not associated with zippyst repo. The image may not be up to date and may contain bugs. Use it at your own risk.
+
+# Bonus Pro-tip
+
+If you're having difficulty obtaining the list of FileCrypt links, you can utilize the [Bypass FileCrypt](https://greasyfork.org/en/scripts/403170-bypass-filecrypt).
