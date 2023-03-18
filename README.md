@@ -1,41 +1,43 @@
-# zippyst
+# Unofficial Docker Image for Zippyst
 
-[![crates.io](https://img.shields.io/crates/v/zippyst.svg)](https://crates.io/crates/zippyst)
-[![Documentation](https://docs.rs/zippyst/badge.svg)](https://docs.rs/zippyst)
-![Test](https://github.com/scotow/zippyst/actions/workflows/tests.yml/badge.svg)
+Extract direct download link from a [zippyshare.com](https://www.zippyshare.com) page without rust stuff.
 
-Extract direct download link from a [zippyshare.com](https://www.zippyshare.com) page. 
+This is an unofficial repository that aims to provide a Docker image for zippyst.
 
-### Usage
+[Official Repo & Docs](https://github.com/scotow/zippyst)
 
+# Usage
+You can pull the image from Docker Hub using the following command:
 ```sh
-USAGE:
-    zippyst LINK...
+docker pull nunodxxd/zippyst
+```
+Extract one link:
+```sh
+docker run -ti --rm nunodxxd/zippyst 'https://www3.zippyshare.com/v/CDCi2wVT/file.html'
+```
+Extract multiple links:
+```sh
+docker run -ti --rm nunodxxd/zippyst 'https://www3.zippyshare.com/v/CDCi2wVT/file.html' 'https://www3.zippyshare.com/v/CDCi2wVT/file.html' 'https://www3.zippyshare.com/v/CDCi2wVT/file.html'
+```
+
+## Extract multiple links with file.txt:
+1 - First, you need to create a file eg:links.txt and add the list of links to it, one link per line without quotes, like this:
+```sh
+https://www51.zippyshare.com/v/9Dw67H0Y/file.html
+https://www13.zippyshare.com/v/xPvlkk08/file.html
+https://www52.zippyshare.com/v/To28kzAt/file.html
+https://www51.zippyshare.com/v/Gnxjl25S/file.html
+```
+2 - Next, you run the following command in the terminal where you create the file:
+```sh
+docker run -ti --rm nunodxxd/zippyst $(cat links.txt)
 ```
 
 ### Examples
 
 The links bellow were used to demonstrate the usage of the command. They may have expired.
 
-```sh
-$ cargo run 'https://www3.zippyshare.com/v/CDCi2wVT/file.html'
-https://www3.zippyshare.com/d/CDCi2wVT/43392/Gillette%20%2c%20the%20best%20a%20man%20can%20get.wav
-
-$ cargo run 'https://www20.zippyshare.com/v/oRFjDgWy/file.html' 'https://www20.zippyshare.com/v/GTU4Fiku/file.html' 'https://www20.zippyshare.com/v/QW589nBO/file.html'
-https://www20.zippyshare.com/d/oRFjDgWy/40318/dev-v2.0.json
-https://www20.zippyshare.com/d/GTU4Fiku/36115/run.js
-https://www20.zippyshare.com/d/QW589nBO/26959/Gillette%20%2c%20the%20best%20a%20man%20can%20get.wav.download.zip
-
-$ xargs -a links.txt zippyst
-https://www20.zippyshare.com/d/oRFjDgWy/40318/dev-v2.0.json
-https://www20.zippyshare.com/d/GTU4Fiku/36115/run.js
-https://www20.zippyshare.com/d/QW589nBO/26959/Gillette%20%2c%20the%20best%20a%20man%20can%20get.wav.download.zip
-```
-
-### Algorithm changes
-
-If you find any link that may not work with this project, please open an issue to let me know, so I might try to support the new algorithm.
 
 ### Disclaimer
 
-This project uses and may run script that are downloaded from the download page. Use it at your own risk. 
+This repository and the Docker image provided here are not associated with zippyst repo. The image may not be up to date and may contain bugs. Use it at your own risk.
